@@ -1,0 +1,261 @@
+package com.example.haydar.magmacepte;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+public class ElektrodAlasimsiz extends AppCompatActivity {
+
+private String[] standart={"SEÇÝNÝZ","EN","DIN"};
+    private String[] malzemeler0={"SEÇÝNÝZ","S185","S355J0","S275J2","P235GH","P265GH","P295GH","P235TR2","P355T2","P235G1TH","P255G1TH","L210","L360NB","L415NB","S255N","S355N","P315N","GE 200","GE 240","GE 260","E295","P295GH","P355GH","L290MB","L360MB","S420N"};
+    private String[] malzemeler1={"SEÇÝNÝZ","St 33","St 52-3","St 44-3","H I","H II","17Mn4","St 37.4","St 52.4","St 35.8","St 45.8","StE 210.7","StE 360.7","StE 255","StE 355","GS 38","GS 45","AH 32","EH 36","A, B, D","M2 (Armco Iron)","GS 52","E","19Mn5","StE 290.7 TM","StE 360.7 TM"};
+    private String[] ozellikler0={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler1={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler2={"SEÇÝNÝZ","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler3={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler4={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler5={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler6={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler7={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler8={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler9={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler10={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler11={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler12={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler13={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler14={"SEÇÝNÝZ","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler15={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler16={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler17={"SEÇÝNÝZ","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler18={"SEÇÝNÝZ","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] ozellikler19={"SEÇÝNÝZ","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler20={"SEÇÝNÝZ","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler21={"SEÇÝNÝZ","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] ozellikler22={"SEÇÝNÝZ","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+
+
+    private String[] DIN0={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN1={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN2={"SEÇÝNÝZ","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN3={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN4={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN5={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN6={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] DIN7={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] DIN8={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] DIN9={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] DIN10={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] DIN11={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] DIN12={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN13={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN14={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN15={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN16={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN17={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN18={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN19={"SEÇÝNÝZ","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu"};
+    private String[] DIN20={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod","Yüksek verimli Demir Tozlu Rutil Elektod"};
+    private String[] DIN21={"SEÇÝNÝZ","Her Pozisyon Ýçin Uygun Rutl Elektrod","Genel Amaçlý Rutil Elektrod","Genel Amaçlý Yüksek Yýðma Oranlý Rutil Elektrod","Galvaniz ve Emaye Kaplanacak Çelikler Ýçin Kaynak Elektrodu","Yüksek Karbonlu Çeliklerin Sýcak Kaynaðý için Elektrod","Ýnce cidarlý Çeliklerin Kök ve Pasolarý için Elektrod","Çok Amaçlý AC/DC Bazik Elektrod","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] DIN22={"SEÇÝNÝZ","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] DIN23={"SEÇÝNÝZ","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+    private String[] DIN24={"SEÇÝNÝZ","Yüksek Mukavemetli Yumuþak Yanýþlý Bazik Elektrod","Yüksek Mukavemetli Bazik Elektrod","Yüksek Mukavemetli Düþük Hidrojenli Bazk Elektrod"};
+
+
+
+    private Spinner spinnerstandart;
+    private Spinner spinnermalzemeler;
+    private Spinner spinnerozellikler;
+    private ArrayAdapter<String> dataAdapterForstandart;
+    private ArrayAdapter<String> dataAdapterFormalzemeler;
+    private ArrayAdapter<String> dataAdapterForozellikler;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_elektrod_alasimsiz);
+
+        spinnerstandart=findViewById(R.id.spinner);
+        spinnermalzemeler=findViewById(R.id.spinner2);
+        spinnerozellikler=findViewById(R.id.spinner3);
+
+
+        dataAdapterForstandart = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, standart);
+        dataAdapterFormalzemeler = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,malzemeler0);
+        dataAdapterForozellikler = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,ozellikler0);
+
+
+        dataAdapterForstandart.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapterFormalzemeler.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapterForozellikler.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerstandart.setAdapter(dataAdapterForstandart);
+        spinnermalzemeler.setAdapter(dataAdapterFormalzemeler);
+        spinnerozellikler.setAdapter(dataAdapterForozellikler);
+
+        spinnerstandart.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,int position, long id) {
+                //Hangi il seçilmiþse onun ilçeleri adapter'e ekleniyor.
+                if (parent.getSelectedItem().toString().equals(standart[1]))
+                    dataAdapterFormalzemeler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item, malzemeler0);
+                else if (parent.getSelectedItem().toString().equals(standart[2]))
+                    dataAdapterFormalzemeler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item, malzemeler1);
+
+                dataAdapterFormalzemeler.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnermalzemeler.setAdapter(dataAdapterFormalzemeler);
+
+
+            }
+          @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+
+
+
+        });
+
+
+        spinnermalzemeler.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,int position, long id) {
+                //Seçilen il ve ilçeyi ekranda gösteriyoruz.
+                Toast.makeText(getBaseContext(), ""+spinnerstandart.getSelectedItem().toString()+"n"+parent.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+
+                if (parent.getSelectedItem().toString().equals(malzemeler0[1]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item, ozellikler1);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[2]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler2);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[3]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler3);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[4]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler4);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[5]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler5);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[6]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler6);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[7]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler7);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[8]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler8);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[9]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler9);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[10]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler10);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[11]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler11);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[12]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler12);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[13]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler13);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[14]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler14);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[15]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler15);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[16]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler16);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[17]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler17);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[18]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler18);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[19]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler19);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[20]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler20);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[21]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler21);
+                else if (parent.getSelectedItem().toString().equals(malzemeler0[22]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,ozellikler22);
+
+
+                if (parent.getSelectedItem().toString().equals(malzemeler1[1]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item, DIN1);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[2]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN2);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[3]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN3);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[4]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN4);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[5]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN5);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[6]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN6);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[7]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN7);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[8]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN8);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[9]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN9);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[10]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN10);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[11]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN11);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[12]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN12);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[13]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN13);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[14]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN14);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[15]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN15);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[16]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN16);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[17]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN17);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[18]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN18);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[19]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN19);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[20]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN20);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[21]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN21);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[22]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN22);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[23]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN23);
+                else if (parent.getSelectedItem().toString().equals(malzemeler1[24]))
+                    dataAdapterForozellikler = new ArrayAdapter<String>(ElektrodAlasimsiz.this, android.R.layout.simple_spinner_item,DIN24);
+
+
+                dataAdapterForozellikler.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerozellikler.setAdapter(dataAdapterForozellikler);
+
+                if (spinnerozellikler.getItemAtPosition(position)=="Her Pozisyon Ýçin Uygun Rutl Elektrod") {
+
+                    startActivities(new Intent[]{new Intent(ElektrodAlasimsiz.this, ESR11.class)});
+
+
+
+
+                }
+
+
+
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+
+
+        });
+
+
+
+
+    }
+
+
+
+
+}
